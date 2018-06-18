@@ -10,18 +10,18 @@
     @Html.ActionLink("Create", "Create", "Customer", htmlAttributes: new { @class = "btn btn-default" })<br>
     @*<a class="btn btn-default" asp-area="" asp-controller="Customer" asp-action="Create">Create</a><br>*@
     Select the customer to update or remove:
-    @using (Html.BeginForm("Update", "Customer", routeValues: Model))
-    {
-        <select class="form-control" id="select" style="display: inline; width: 270px">
-            <option></option>
-            @foreach (var customer in Model)
-            {
-                <option value="@customer.ID">@customer.Name @customer.Surname</option>
-            }
-        </select>      
-    }
-    <a class="btn btn-default" asp-area="" asp-controller="Customer" asp-action="Update">Update</a>
-    <a class="btn btn-default" asp-area="" asp-controller="Customer" asp-action="Remove">Remove</a>
+    <select class="form-control" id="select" style="display: inline; width: 270px">
+        <option></option>
+        @foreach (var customer in Model)
+        {
+            <option value="@customer.ID">@customer.Name @customer.Surname</option>
+        }
+    </select>
+    @*<a class="btn btn-default" asp-area="" asp-controller="Customer" asp-action="Update">Update</a>*@
+    <button class="btn btn-default" onclick="updateCustomer()">Update</button>
+    @*<a class="btn btn-default" asp-area="" asp-controller="Customer" asp-action="Remove">Remove</a>*@
+    <button class="btn btn-default" onclick="removeCustomer()">Remove</button>
+
 </div>
 
 @if (Model != null && Model.Any())
@@ -47,3 +47,4 @@
         }
     </table>
 }
+

@@ -26,16 +26,24 @@ namespace CapgeminiApp.Controllers
         {
             return View();
         }
-        
-        public IActionResult Update(CustomerModel model)
+
+        public IActionResult Update(Guid id)
         {
-            var customer = _manager.GetCustomerByID(model.ID);
-            return View(customer);
+            var customer = _manager.GetCustomerByID(id);
+            return View();
         }
 
-        public IActionResult Remove()
+        public IActionResult Remove(Guid id)
         {
+            var customer = _manager.GetCustomerByID(id);
             return View();
+        }
+
+        public IActionResult RemoveCustomer(Guid id)
+        {
+            var customer = _manager.GetCustomerByID(id);
+            _manager.RemoveCustomer(id);            
+            return ManageCustomers();
         }
 
         [HttpPost]

@@ -13,5 +13,6 @@ namespace CapgeminiApp
         void RemoveCustomer(CustomerModel model);
         IEnumerable<CustomerModel> GetAllCustomers();
         CustomerModel GetCustomerByID(Guid ID);
+        void RemoveCustomer(Guid id);
     }
 }

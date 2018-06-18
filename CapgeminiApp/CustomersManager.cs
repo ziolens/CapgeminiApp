@@ -80,5 +80,15 @@ namespace CapgeminiApp
 
             return customerModel;
         }
+
+        public void RemoveCustomer(Guid id)
+        {
+            using (var context = new CustomerDbContext())
+            {
+                var query = "DELETE FROM Customers WHERE ID = @ID";
+                var sqlParameter = new SqlParameter("@ID", id);
+                context.Database.ExecuteSqlCommand(query, sqlParameter);
+            }
+        }
     }
 }
