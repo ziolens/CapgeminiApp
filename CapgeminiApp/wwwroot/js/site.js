@@ -1,0 +1,3 @@
+﻿jQuery("#select").change(function () {
+    
+});

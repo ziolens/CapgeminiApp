@@ -1,0 +1,49 @@
+﻿@model List<CustomerModel>
+@{
+    ViewData["Title"] = "ManageCustomers";
+}
+<script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="~/js/site.js"></script>
+<h2>ManageCustomers</h2>
+<div class="container" style="margin: 5px">
+    Create new customer:
+    @Html.ActionLink("Create", "Create", "Customer", htmlAttributes: new { @class = "btn btn-default" })<br>
+    @*<a class="btn btn-default" asp-area="" asp-controller="Customer" asp-action="Create">Create</a><br>*@
+    Select the customer to update or remove:
+    @using (Html.BeginForm("Update", "Customer", routeValues: Model))
+    {
+        <select class="form-control" id="select" style="display: inline; width: 270px">
+            <option></option>
+            @foreach (var customer in Model)
+            {
+                <option value="@customer.ID">@customer.Name @customer.Surname</option>
+            }
+        </select>      
+    }
+    <a class="btn btn-default" asp-area="" asp-controller="Customer" asp-action="Update">Update</a>
+    <a class="btn btn-default" asp-area="" asp-controller="Customer" asp-action="Remove">Remove</a>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped" style="padding: 1px">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>TelephoneNumber</th>
+            <th>Address</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.TelephoneNumber</td>
+                <td>@item.Address</td>
+            </tr>
+        }
+    </table>
+}
