@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CapgeminiApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,42 +26,38 @@ namespace CapgeminiApp.Controllers
 
         public IActionResult Update(Guid id)
         {
-            var customer = _manager.GetCustomerByID(id);
-            return View();
+            var customer = _manager.GetCustomerByID(id);            
+            return View(customer);
         }
 
         public IActionResult Remove(Guid id)
         {
             var customer = _manager.GetCustomerByID(id);
-            return View();
-        }
-
-        public IActionResult RemoveCustomer(Guid id)
-        {
-            var customer = _manager.GetCustomerByID(id);
-            _manager.RemoveCustomer(id);            
-            return ManageCustomers();
+            return View(customer);       
         }
 
         [HttpPost]
-        public void CreateCustomer(CustomerModel model)
+        public IActionResult CreateCustomer(CustomerModel model)
         {
             _manager.CreateCustomer(model);
-            ManageCustomers();
+            var customers = _manager.GetAllCustomers();
+            return View("ManageCustomers", customers);
         }
 
         [HttpPost]
-        public void UpdateCustomer(CustomerModel model)
+        public IActionResult UpdateCustomer(CustomerModel model)
         {
             _manager.UpdateCustomer(model);
-            ManageCustomers();
+            var customers = _manager.GetAllCustomers();
+            return View("ManageCustomers", customers);
         }
 
         [HttpPost]
-        public void RemoveCustomer(CustomerModel model)
+        public IActionResult RemoveCustomer(CustomerModel model)
         {
             _manager.RemoveCustomer(model);
-            ManageCustomers();
+            var customers = _manager.GetAllCustomers();
+            return View("ManageCustomers", customers);
         }
     }
 }

@@ -8,4 +8,3 @@ D:\VS Projects\CapgeminiApp\CapgeminiApp\obj\Debug\netcoreapp2.0\CapgeminiApp.As
 D:\VS Projects\CapgeminiApp\CapgeminiApp\obj\Debug\netcoreapp2.0\CapgeminiApp.AssemblyInfo.cs
 D:\VS Projects\CapgeminiApp\CapgeminiApp\obj\Debug\netcoreapp2.0\CapgeminiApp.dll
 D:\VS Projects\CapgeminiApp\CapgeminiApp\obj\Debug\netcoreapp2.0\CapgeminiApp.pdb
-D:\VS Projects\CapgeminiApp\CapgeminiApp\obj\Debug\netcoreapp2.0\CapgeminiApp.csprojResolveAssemblyReference.cache
