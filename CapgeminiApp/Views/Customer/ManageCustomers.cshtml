@@ -4,15 +4,17 @@
 }
 <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
 <script>
-    function updateCustomer() {
-        var id = jQuery("#select option:selected").val();
-        window.location.href = "/Customer/Update/" + id;
-    }
-
-    function removeCustomer() {
-        var id = jQuery("#select option:selected").val();
-        window.location.href = "/Customer/Remove/" + id;
-    }
+    jQuery("document").ready(function () {
+        jQuery("#updateButton, #removeButton").hide();
+        jQuery("#select").change(function () {
+            jQuery("#updateButton, #removeButton").show();
+            var id = jQuery("#select option:selected").val();
+            var hrefUpdate = "/Customer/Update/" + id;
+            jQuery("#updateButton").prop("href", hrefUpdate);
+            var hrefRemove = "/Customer/Remove/" + id;
+            jQuery("#removeButton").prop("href", hrefRemove);
+        });
+    });
 </script>
 <h2>ManageCustomers</h2>
 <div class="container" id="manageCustomers" style="margin: 5px">
@@ -22,16 +24,16 @@
     {
         <label>Select the customer to update or remove:</label>
         <select class="form-control" id="select" style="display: inline; width: 270px">
+            <option selected="selected" disabled="disabled">Choose customer</option>
             @foreach (var customer in Model)
             {
                 <option value="@customer.ID">@customer.Name @customer.Surname</option>
             }
         </select>
-        <button class="btn btn-default" onclick="updateCustomer()">Update</button>
-        <button class="btn btn-default" onclick="removeCustomer()">Remove</button>
+        @Html.ActionLink("Update", "Update", "Customer", htmlAttributes: new { @class = "btn btn-default", id = "updateButton" })
+        @Html.ActionLink("Remove", "Remove", "Customer", htmlAttributes: new { @class = "btn btn-default", id = "removeButton" })
     }
 </div>
-
 @if (Model != null && Model.Any())
 {
     <table class="table table-striped" style="padding: 1px">
@@ -42,7 +44,6 @@
             <th>TelephoneNumber</th>
             <th>Address</th>
         </tr>
-
         @foreach (var item in Model)
         {
             <tr>
@@ -55,4 +56,3 @@
         }
     </table>
 }
-
