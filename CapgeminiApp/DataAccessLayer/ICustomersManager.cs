@@ -1,9 +1,9 @@
-﻿using CapgeminiApp.Models;
-using System;
-using System.Collections.Generic;
-
-namespace CapgeminiApp
+﻿namespace CapgeminiApp.DataAccessLayer
 {
+    using System;
+    using System.Collections.Generic;
+    using Models;
+
     public interface ICustomersManager
     {
         void CreateCustomer(CustomerModel model);
@@ -11,6 +11,5 @@ namespace CapgeminiApp
         void RemoveCustomer(CustomerModel model);
         IEnumerable<CustomerModel> GetAllCustomers();
         CustomerModel GetCustomerByID(Guid ID);
-        void RemoveCustomer(Guid id);
     }
 }

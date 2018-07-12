@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CapgeminiApp.Controllers
 {
+    using DataAccessLayer;
+
     public class CustomerController : Controller
     {
         private ICustomersManager _manager;

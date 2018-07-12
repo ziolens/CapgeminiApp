@@ -1,21 +1,9 @@
-﻿@model List<CustomerModel>
+﻿@model IEnumerable<CustomerModel>
 @{
     ViewData["Title"] = "ManageCustomers";
 }
 <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
-<script>
-    jQuery("document").ready(function () {
-        jQuery("#updateButton, #removeButton").hide();
-        jQuery("#select").change(function () {
-            jQuery("#updateButton, #removeButton").show();
-            var id = jQuery("#select option:selected").val();
-            var hrefUpdate = "/Customer/Update/" + id;
-            jQuery("#updateButton").prop("href", hrefUpdate);
-            var hrefRemove = "/Customer/Remove/" + id;
-            jQuery("#removeButton").prop("href", hrefRemove);
-        });
-    });
-</script>
+<script type="text/javascript" src="js/site.js"></script>
 <h2>ManageCustomers</h2>
 <div class="container" id="manageCustomers" style="margin: 5px">
     <label>Create new customer:</label>
